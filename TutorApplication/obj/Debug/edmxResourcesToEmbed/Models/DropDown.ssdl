@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdminModelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="C_Id" />
+    </Key>
+    <Property Name="C_Id" Type="int" Nullable="false" />
+    <Property Name="C_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="stateTbl">
+    <Key>
+      <PropertyRef Name="S_Id" />
+    </Key>
+    <Property Name="S_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="s_Name" Type="varchar" MaxLength="50" />
+    <Property Name="C_Id" Type="int" />
+  </EntityType>
+  <Association Name="FK__stateTbl__C_Id__5CD6CB2B">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="stateTbl" Type="Self.stateTbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="C_Id" />
+      </Principal>
+      <Dependent Role="stateTbl">
+        <PropertyRef Name="C_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AdminModelModelStoreContainer">
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stateTbl" EntityType="Self.stateTbl" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__stateTbl__C_Id__5CD6CB2B" Association="Self.FK__stateTbl__C_Id__5CD6CB2B">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="stateTbl" EntitySet="stateTbl" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

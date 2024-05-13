@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbrrgisloginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbrrgislogin.dbo.UserTbl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserTbl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="dbrrgisloginModelStoreContainer">
+    <EntitySet Name="UserTbl" EntityType="Self.UserTbl" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UserTbl].[id] AS [id], 
+    [UserTbl].[Username] AS [Username], 
+    [UserTbl].[Password] AS [Password]
+    FROM [dbo].[UserTbl] AS [UserTbl]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
